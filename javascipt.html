@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location and Credentials Check</title>
+</head>
+<body>
+
+<script>
+    // Function to get user's location
+    function askForLocation() {
+        let location = prompt("Please enter your location (Punjab, Haryana, Chandigarh):");
+        checkLocation(location);
+    }
+
+    // Function to check the location
+    function checkLocation(location) {
+        if (location === "Punjab" || location === "Haryana" || location === "Chandigarh") {
+            askForCredentials(location);
+        } else {
+            alert("Access Denied");
+        }
+    }
+
+    // Function to ask for credentials
+    function askForCredentials(location) {
+        let username = prompt("Please enter your username:");
+        let password = prompt("Please enter your password:");
+        checkCredentials(location, username, password);
+    }
+
+    // Function to check the credentials
+    function checkCredentials(location, username, password) {
+        // Dummy credentials for demonstration purposes
+        const validUsername = "Amaan";
+        const validPassword = "333";
+
+        if (username === validUsername && password === validPassword) {
+            showMap(location);
+        } else {
+            alert ("Wrong Credentials");
+        }
+    }
+
+    // Function to show the map
+    function showMap(location) {
+        let mapUrl;
+        switch (location) {
+            case "Punjab":
+                mapUrl = "https://www.google.com/maps/place/Punjab";
+                break;
+            case "Haryana":
+                mapUrl = "https://www.google.com/maps/place/Haryana";
+                break;
+            case "Chandigarh":
+                mapUrl = "https://www.google.com/maps/place/Chandigarh";
+                break;
+        }
+        window.location.href = mapUrl;
+    }
+
+    // Start the process by asking for location
+    askForLocation();
+</script>
+
+</body>
+</html>
